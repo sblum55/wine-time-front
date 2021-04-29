@@ -4,9 +4,9 @@ const Home = (props) => {
 
     console.log(props.allWines);
 
-    const wineList = props.allWines.map(wine => (
+    const wineList = props.allWines.slice(0).reverse().map(wine => (
         <li key = {wine.id} className = 'wine-list'>
-            <Link className = 'wineLink' to = {`/${wine.id}`}>{wine.name}</Link>
+            <Link className = 'wineLink' to = {`/wine/${wine.id}`}>{wine.name}</Link>
         </li>
     ))
 
@@ -14,6 +14,17 @@ const Home = (props) => {
         <div>
             <h1>Wine Talk</h1>
             <div className = 'wineContainer'>
+                <div>
+                    {props.user.id ?
+                    <Link to = '/new'>
+                        <button>POST A WINE</button>
+                    </Link>
+                    :
+                    <div>
+                        <p>LOG IN TO SHARE YOUR WINE!</p>
+                    </div>
+                    }
+                </div>
                 {wineList}
             </div>
         </div>

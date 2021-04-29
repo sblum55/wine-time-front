@@ -7,6 +7,10 @@ h1 {
   text-align: center;
 }
 
+img {
+  width: 40%;
+}
+
 .navBar {
   padding: 20px;
   font-size: 20px;
@@ -26,6 +30,12 @@ h1 {
 .homeBtn {
   margin-top: 15px;
   padding-right: 10px;
+}
+
+.wineFormLink {
+  margin-top: 15px;
+  padding-right: 10px;
+  color: white;
 }
 
 .wineContainer {

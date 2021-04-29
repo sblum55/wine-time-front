@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import SignUpForm from './pages/SignUp'
 import LogInForm from './pages/LogIn'
 import SingleWine from './pages/SingleWine'
+import WineForm from './pages/CreateWine'
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
     })
   }
 
-  useEffect(fetchWine, [])
+  useEffect( () => {fetchWine()} , [])
 
   const fetchUser = () => {
     console.log();
@@ -45,7 +46,7 @@ function App() {
 
       {/* Home Page */}
       <Route exact path = '/'>
-        <Home allWines = {allWines} />
+        <Home allWines = {allWines} user = {user} />
       </Route>
 
         {/* Sign Up Form */}
@@ -67,9 +68,14 @@ function App() {
       }} />
 
       {/* Single Wine Page */}
-      <Route path = '/:id' render = {(routingInfo) => {
-        return <SingleWine id = {routingInfo.match.params.id} />
+      <Route exact path = '/wine/:id' render = {(routingInfo) => {
+        return <SingleWine id = {routingInfo.match.params.id} user = {user} />
       }} />
+
+      {/* Wine form Page */}
+      <Route exact path = '/new'>
+        <WineForm user = {user} setUser = {setUser} />
+      </Route>
 
 
     </div>
