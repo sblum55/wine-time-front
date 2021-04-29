@@ -7,9 +7,22 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import SignUpForm from './pages/SignUp'
 import LogInForm from './pages/LogIn'
+import SingleWine from './pages/SingleWine'
+
 
 function App() {
   const [user, setUser] = useState({})
+  const [allWines, setAllWines] = useState([])
+
+  const fetchWine = () => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines`)
+    .then((response) => {
+      console.log(response.data);
+      setAllWines(response.data)
+    })
+  }
+
+  useEffect(fetchWine, [])
 
   const fetchUser = () => {
     console.log();
@@ -26,11 +39,16 @@ function App() {
 
   return (
     <div className="App">
+
+      {/* NavBar */}
       <NavBar user = {user} setUser = {setUser} />
+
+      {/* Home Page */}
       <Route exact path = '/'>
-        <Home />
+        <Home allWines = {allWines} />
       </Route>
 
+        {/* Sign Up Form */}
       <Route exact path = '/signup' render={() => {
         if (user.id) {
           return <Redirect to = '/'/>
@@ -39,6 +57,7 @@ function App() {
         }
       }} />
 
+        {/* Login Form */}
       <Route exact path = '/login' render={() => {
         if (user.id) {
           return <Redirect to = '/'/>
@@ -46,6 +65,13 @@ function App() {
           return <LogInForm setUser = {setUser} />
         }
       }} />
+
+      {/* Single Wine Page */}
+      <Route path = '/:id' render = {(routingInfo) => {
+        return <SingleWine id = {routingInfo.match.params.id} />
+      }} />
+
+
     </div>
   );
 }

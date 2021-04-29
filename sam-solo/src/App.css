@@ -1,14 +1,17 @@
-.App {
+body {
   text-align: center;
 }
+
 h1 {
   font-size: 75px;
+  text-align: center;
 }
 
 .navBar {
   padding: 20px;
   font-size: 20px;
   background-color: black;
+  text-align: center;
 }
 
 .delete {
@@ -16,11 +19,28 @@ h1 {
   text-decoration: underline;
 }
 
-a {
+.navLink {
   color: white;
 }
 
 .homeBtn {
   margin-top: 15px;
-  padding-right: 5px;
+  padding-right: 10px;
+}
+
+.wineContainer {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wine-list {
+  width: 100%;
+  margin: 15px;
+  list-style-type: none;
+  padding: 20px;
+  font-size: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
 }

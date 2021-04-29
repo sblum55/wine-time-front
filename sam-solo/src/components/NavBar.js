@@ -6,7 +6,7 @@ const NavBar = (props) => {
         <div className = 'navBar'>
             {props.user.id ? <>
             <span className = 'homeBtn'>
-            <Link to = '/'>
+            <Link className = 'navLink' to = '/'>
                 HOME
             </Link>
             </span>
@@ -19,10 +19,10 @@ const NavBar = (props) => {
             </>
              :
              <>
-            <Link to = '/signup'>
+            <Link className = 'navLink' to = '/signup'>
                 <button>SIGN UP</button>
             </Link>{ ' | '}
-            <Link to = '/login'>
+            <Link className = 'navLink' to = '/login'>
                 <button>LOGIN</button>
             </Link>
              </>
