@@ -26,8 +26,8 @@ This app will allow users to post wines that have enjoyed or not enjoyed. It wil
 ![Alt Text](./wireframes/sign-up-form.jpg)
 ![Alt Text](./wireframes/comment-form.jpg)
 ![Alt Text](./wireframes/create-wine.jpg)
-
 ### ERD:
+![Alt Text](./ERD.jpg)
 
 ### Routes:
 ### MVP's:
