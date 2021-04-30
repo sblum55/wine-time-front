@@ -50,7 +50,10 @@ const SingleWine = (props) => {
                                 setShouldRedirect('/')
                             })
                         }} >DELETE</button>
-                        <button>EDIT</button>
+
+                        <Link to = {`/wine/${wine.id}/edit`} wine = {wine}>
+                            <button>EDIT</button>
+                        </Link>
                     </div>
             }
 
