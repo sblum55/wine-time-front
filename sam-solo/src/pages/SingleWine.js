@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 
 const SingleWine = (props) => {
     const [wine, setWine] = useState({})
+    const [shouldRedirect, setShouldRedirect] = useState(null)
 
     const fetchOneWine = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.id}`)
@@ -14,21 +15,45 @@ const SingleWine = (props) => {
         })
     }
 
-    useEffect(() => {fetchOneWine()} , [])
+    useEffect(fetchOneWine , [props.id])
+
+    const isCreator = () => {
+        return wine.userId === props.user.id
+    }
 
     return (
         <div>
+            { shouldRedirect && <Redirect to = {shouldRedirect}/>}
             <div>
-                    {props.user.id ?
+                {props.user.id ? <>
                     <Link to = '/new'>
                         <button>POST A WINE</button>
                     </Link>
+                    </>
                     :
+                    <>
                     <div>
                         <p>LOG IN TO SHARE YOUR WINE!</p>
                     </div>
-                    }
-                </div>
+                    </>
+                }
+            </div>
+
+            {isCreator() &&
+                    <div>
+                        <button onClick = {() => {
+                            axios.delete(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.id}`, {
+                                headers: {
+                                    Authorization: props.user.id
+                                }
+                            }).then ((response) => {
+                                setShouldRedirect('/')
+                            })
+                        }} >DELETE</button>
+                        <button>EDIT</button>
+                    </div>
+            }
+
             <h1>{wine.name}</h1>
             <h2>{wine.type}</h2>
             <img src = {wine.image}></img>

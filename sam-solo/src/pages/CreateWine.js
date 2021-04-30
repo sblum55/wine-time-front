@@ -11,7 +11,7 @@ const WineForm = (props) => {
   
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('called handle submit');
+        // console.log('called handle submit');
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/wines`, {name, type, price, image, purchase_location, description}, {
             headers: {
                 Authorization: props.user.id
