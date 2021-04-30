@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 
 const SingleWine = (props) => {
+    console.log('found props', props);
     const [wine, setWine] = useState({})
     const [shouldRedirect, setShouldRedirect] = useState(null)
 
@@ -51,14 +52,13 @@ const SingleWine = (props) => {
                             })
                         }} >DELETE</button>
 
-                        <Link to = {`/wine/${wine.id}/edit`} wine = {wine}>
+                        <Link to = {`/wine/${props.id}/edit`} >
                             <button>EDIT</button>
                         </Link>
                     </div>
             }
 
             <h1>{wine.name}</h1>
-            <h2>{wine.type}</h2>
             <img src = {wine.image}></img>
             <p>{wine.price}</p>
             <p>{wine.purchase_location}</p>
