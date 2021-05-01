@@ -3,12 +3,15 @@ body {
 }
 
 h1 {
-  font-size: 75px;
+  font-size: 70px;
   text-align: center;
+  margin: 20px;
 }
 
 img {
   width: 40%;
+  border-radius: 5px;
+  border: 5px solid black;
 }
 
 .navBar {
@@ -25,6 +28,18 @@ img {
 
 .navLink {
   color: white;
+}
+
+.createWineBtn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 15px;
+
+}
+
+.deleteWineBtn {
+  margin-right: 10px;
 }
 
 .homeBtn {
@@ -53,4 +68,75 @@ img {
   font-size: 25px;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.commentForm {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  background-color: #8f2d56;
+  color: white;
+}
+
+.commentLabel {
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.commentInput {
+  border-radius: 5px;
+}
+
+.commentBtn {
+  margin-left: 20px;
+  padding: 5px;
+  background-color: #2a2c24;
+  color: white;
+  border-radius: 5px;
+}
+
+.commentSection {
+  border: 2px solid black;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.nameArea {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+}
+
+.emailArea {
+  margin-bottom: 20px;
+
+}
+
+.signUpBtnArea {
+  margin-top: 20px;
+}
+
+.signUpBtn {
+  padding: 10px;
+  font-size: 15px;
+}
+
+.signUpInput {
+  width: 200px;
+  padding: 10px;
+}
+
+.loginFormArea {
+  margin-top: 20px;
+}
+
+.loginInput{
+  width: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.createWineInput {
+  width: 300px;
+  margin-bottom: 20px;
+  padding: 10px;
 }

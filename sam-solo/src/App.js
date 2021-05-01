@@ -19,7 +19,7 @@ function App() {
   const fetchWine = () => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines`)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setAllWines(response.data)
     })
   }
@@ -27,7 +27,6 @@ function App() {
   useEffect(fetchWine, [])
 
   const fetchUser = () => {
-    console.log();
     if (localStorage.getItem('userId')) {
       axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/verify`, {
         headers: {

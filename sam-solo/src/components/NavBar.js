@@ -20,10 +20,10 @@ const NavBar = (props) => {
              :
              <>
             <Link className = 'navLink' to = '/signup'>
-                <button>SIGN UP</button>
+                SIGN UP
             </Link>{ ' | '}
             <Link className = 'navLink' to = '/login'>
-                <button>LOGIN</button>
+                LOGIN
             </Link>
              </>
             

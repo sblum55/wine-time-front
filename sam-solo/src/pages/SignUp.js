@@ -18,21 +18,28 @@ const SignUpForm = (props) => {
 
     return (
         <div>
+            <h1>Join the Fun Here!!</h1>
             <form onSubmit = {handleSubmit}>
-                <div>
-                    <label htmlFor = 'new-name'>Name: </label>
-                    <input id = 'new-name' value = {name} onChange = {(e) => {setName(e.target.value)}} />
+                <div className = 'nameArea'>
+                    <div>
+                    <label htmlFor = 'new-name'>Name </label>
+                    </div>
+                    <input className = 'signUpInput' id = 'new-name' value = {name} onChange = {(e) => {setName(e.target.value)}} />
                 </div>
-                <div>
-                    <label htmlFor = 'new-email'>Email: </label>
-                    <input id = 'new-email' value = {email} onChange = {(e) => {setEmail(e.target.value)}} />
+                <div className = 'emailArea'>
+                    <div>
+                    <label htmlFor = 'new-email'>Email </label>
+                    </div>
+                    <input className = 'signUpInput' id = 'new-email' value = {email} onChange = {(e) => {setEmail(e.target.value)}} />
                 </div>
-                <div>
-                    <label htmlFor = 'new-password'>Password: </label>
-                    <input type = 'password' id = 'new-password' value = {password} onChange = {(e) => {setPassword(e.target.value)}} />
+                <div className = 'passwordArea'>
+                    <div>
+                    <label htmlFor = 'new-password'>Password </label>
+                    </div>
+                    <input className = 'signUpInput' type = 'password' id = 'new-password' value = {password} onChange = {(e) => {setPassword(e.target.value)}} />
                 </div>
-                <div>
-                    <input type = 'submit' value = 'SUBMIT' />
+                <div className = 'signUpBtnArea'>
+                    <input className = 'signUpBtn' type = 'submit' value = 'SUBMIT' />
                 </div>
             </form>
         </div>

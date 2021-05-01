@@ -16,15 +16,22 @@ const LogInForm = (props) => {
     }
 
     return (
-        <div>
+        <div className = 'loginFormArea'>
+            <div>
+                <h1>Login to Get Started!</h1>
+            </div>
             <form onSubmit = {handleSubmit}>
                 <div>
-                    <label htmlFor = 'new-email'>Email: </label>
-                    <input id = 'new-email' value = {email} onChange = {(e) => {setEmail(e.target.value)}} />
+                    <div>
+                    <label htmlFor = 'new-email'>Email</label>
+                    </div>
+                    <input className = 'loginInput' id = 'new-email' value = {email} onChange = {(e) => {setEmail(e.target.value)}} />
                 </div>
                 <div>
-                    <label htmlFor = 'new-password'>Password: </label>
-                    <input type = 'password' id = 'new-password' value = {password} onChange = {(e) => {setPassword(e.target.value)}} />
+                    <div>
+                    <label htmlFor = 'new-password'>Password</label>
+                    </div>
+                    <input className = 'loginInput' type = 'password' id = 'new-password' value = {password} onChange = {(e) => {setPassword(e.target.value)}} />
                 </div>
                 <div>
                     <input type = 'submit' value = 'SUBMIT' />
