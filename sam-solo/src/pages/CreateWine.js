@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
 const WineForm = (props) => {
     // console.log(props);
@@ -9,6 +10,8 @@ const WineForm = (props) => {
     const [image, setImage] = useState('')
     const [purchase_location, setPurchase_Location] = useState('')
     const [description, setDescription] = useState('')
+
+    const [redirect, setRedirect] = useState(null)
   
     const handleSubmit = (e) => {
         const auth = localStorage.getItem('userId')
@@ -23,12 +26,15 @@ const WineForm = (props) => {
         .then((response) => {
             console.log(response);
             props.setUser(response.data.user)
+            setRedirect('/')
+            
         })
     }
 
     return (
         <div>
             <h1>Tell Us About Some Wine!</h1>
+            {redirect && <Redirect to = {redirect} />} 
             <form onSubmit={handleSubmit}>
                 <div>
                     <div>

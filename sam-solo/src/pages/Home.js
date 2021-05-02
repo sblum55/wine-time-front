@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Home = (props) => {
+    const auth = localStorage.getItem('userId')
 
     console.log(props.allWines);
 
@@ -15,7 +16,7 @@ const Home = (props) => {
             <h1>Wine Talk</h1>
             <div className = 'wineContainer'>
                 <div>
-                    {props.user.id ?
+                    {auth ?
                     <Link to = '/new'>
                         <button>POST A WINE</button>
                     </Link>

@@ -5,6 +5,8 @@ const AddComment = (props) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
+    const auth = localStorage.getItem('userId')
+
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.postId}/comments`, {
@@ -12,7 +14,7 @@ const AddComment = (props) => {
             description
         }, {
             headers: {
-                Authorization: props.user
+                Authorization: auth
             }
         })
         .then((response) => {
