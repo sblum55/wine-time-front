@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 
 const WineForm = (props) => {
+    // console.log(props);
     const [name, setName] = useState('')
     const [type, setType] = useState('')
     const [price, setPrice] = useState('')
@@ -10,11 +11,13 @@ const WineForm = (props) => {
     const [description, setDescription] = useState('')
   
     const handleSubmit = (e) => {
+        const auth = localStorage.getItem('userId')
+        console.log(auth);
         e.preventDefault()
-        // console.log('called handle submit');
+        console.log('called handle submit');
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/wines`, {name, type, price, image, purchase_location, description}, {
             headers: {
-                Authorization: props.user.id
+                Authorization: auth
             }
         })
         .then((response) => {

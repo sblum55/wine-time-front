@@ -33,7 +33,9 @@ function App() {
           Authorization: localStorage.getItem('userId')
         }
       })
-      .then ((response) => {setUser(response.data.user)})
+      .then ((response) => {
+        console.log('verify response', response);
+        setUser(response.data.user)})
     }
   }
   useEffect(fetchUser, [])

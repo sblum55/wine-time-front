@@ -9,6 +9,7 @@ const SingleWine = (props) => {
     const [wine, setWine] = useState({})
     const [shouldRedirect, setShouldRedirect] = useState(null)
     const [comment, setComment] = useState([])
+    const auth = localStorage.getItem('userId')
 
     const fetchOneWine = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.id}`)
@@ -23,14 +24,14 @@ const SingleWine = (props) => {
     useEffect(fetchOneWine , [props.id])
 
     const isCreator = () => {
-        return wine.userId === props.user.id
+        return wine.userId === auth
     }
 
     return (
         <div>
             { shouldRedirect && <Redirect to = {shouldRedirect}/>}
             <div>
-                {props.user.id ? <>
+                {auth ? <>
                     <Link to = '/new'>
                         <button className = 'createWineBtn'>POST A WINE</button>
                     </Link>
@@ -49,7 +50,7 @@ const SingleWine = (props) => {
                         <button className = 'deleteWineBtn' onClick = {() => {
                             axios.delete(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.id}`, {
                                 headers: {
-                                    Authorization: props.user.id
+                                    Authorization: auth
                                 }
                             }).then ((response) => {
                                 setShouldRedirect('/')

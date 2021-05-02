@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
+    const auth = localStorage.getItem('userId')
     // console.log(props);
     return (
         <div className = 'navBar'>
-            {props.user.id ? <>
+            {auth ? <>
             <span className = 'homeBtn'>
             <Link className = 'navLink' to = '/'>
                 HOME
