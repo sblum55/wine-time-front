@@ -11,6 +11,11 @@ const NavBar = (props) => {
                 HOME
             </Link>
             </span>
+            <span className = 'newWine'>
+            <Link className = 'navLink' to = '/new'>
+                POST A WINE
+            </Link>
+            </span>
             <span className = 'deleteBtn'>
             <span className = 'delete' onClick = {() => {
                 localStorage.removeItem('userId')

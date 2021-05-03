@@ -76,9 +76,10 @@ function App() {
 
       {/* Wine form Page */}
       <Route exact path = '/new'>
-        <WineForm user = {user} setUser = {setUser} />
+        <WineForm user = {user} setUser = {setUser} fetchWine = {fetchWine} />
       </Route>
 
+      {/* Edit Wine Form */}
       <Route exact path = '/wine/:id/edit' render = {(routingInfo) => {
         return <EditWine id = {routingInfo.match.params.id} user = {user} />
       }} />

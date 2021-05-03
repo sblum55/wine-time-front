@@ -9,6 +9,7 @@ const SingleWine = (props) => {
     const [wine, setWine] = useState({})
     const [shouldRedirect, setShouldRedirect] = useState(null)
     const [comment, setComment] = useState([])
+    const [isMatch, setIsMatch] = useState(false)
     const auth = localStorage.getItem('userId')
 
     const fetchOneWine = () => {
@@ -23,29 +24,30 @@ const SingleWine = (props) => {
 
     useEffect(fetchOneWine , [props.id])
 
-    const isCreator = () => {
-        return wine.userId === auth
+    const isCreator = async (id) => {
+        let response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/verify`, {
+            headers: {
+                Authorization: localStorage.getItem('userId')
+            }
+        })
+        console.log(response.data.user, id);
+        if (response.data.user === id) {
+            setIsMatch(true)
+            return true
+        } else {
+            return false
+        }
     }
+
+    // const isCreator = () => {
+    //     return wine.userId === auth
+    // }
 
     return (
         <div>
             { shouldRedirect && <Redirect to = {shouldRedirect}/>}
-            <div>
-                {auth ? <>
-                    <Link to = '/new'>
-                        <button className = 'createWineBtn'>POST A WINE</button>
-                    </Link>
-                    </>
-                    :
-                    <>
-                    <div>
-                        <p>LOG IN TO SHARE YOUR WINE!</p>
-                    </div>
-                    </>
-                }
-            </div>
 
-            {isCreator() &&
+            {isMatch &&
                     <div>
                         <button className = 'deleteWineBtn' onClick = {() => {
                             axios.delete(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.id}`, {
@@ -63,16 +65,19 @@ const SingleWine = (props) => {
                     </div>
             }
 
-            <div className = 'wineContainer'>
+            <div className = 'singleWineContainer'>
+                <div>
             <h1>{wine.name}</h1>
+            <span>{wine.type}</span>{ ' | '}
+            <span>{wine.price}</span>{ ' | '}
+            <span>{wine.purchase_location}</span>
+                </div>
             <img src = {wine.image}></img>
-            <p>{wine.price}</p>
-            <p>{wine.purchase_location}</p>
             <p>{wine.description}</p>
             </div>
 
             <div className = 'commentForm'>
-            <AddComment postId = {props.id} user = {props.user.id} />
+            <AddComment postId = {props.id} auth = {auth} />
             </div>
             <h2>Wine Thoughts</h2>
             <div className = 'commentContainer'>

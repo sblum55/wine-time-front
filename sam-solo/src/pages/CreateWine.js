@@ -15,9 +15,9 @@ const WineForm = (props) => {
   
     const handleSubmit = (e) => {
         const auth = localStorage.getItem('userId')
-        console.log(auth);
+        // console.log(auth);
         e.preventDefault()
-        console.log('called handle submit');
+        // console.log('called handle submit');
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/wines`, {name, type, price, image, purchase_location, description}, {
             headers: {
                 Authorization: auth
@@ -27,6 +27,7 @@ const WineForm = (props) => {
             console.log(response);
             props.setUser(response.data.user)
             setRedirect('/')
+            props.fetchWine()
             
         })
     }

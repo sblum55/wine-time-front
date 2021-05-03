@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
 const AddComment = (props) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [redirect, setRedirect] = useState(null)
 
     const auth = localStorage.getItem('userId')
 
@@ -19,8 +21,9 @@ const AddComment = (props) => {
         })
         .then((response) => {
             console.log(response);
-            // setTitle('')
-            // setDescription('')
+            setTitle('')
+            setDescription('')
+            setRedirect(`/wine/${props.postId}`)
         })
     }
 
@@ -28,6 +31,7 @@ const AddComment = (props) => {
         <div>
             <h2>Submit Your Thoughts here!</h2>
             <div className = 'commentContainer'>
+                {redirect && <Redirect to = {redirect} />}
                 <form onSubmit = {handleSubmit}>
                     <label className = 'commentLabel' htmlFor = 'new-title'>Title: </label>
                     <input className = 'commentInput' value = {title} onChange = {(e) => {setTitle(e.target.value)}} />
