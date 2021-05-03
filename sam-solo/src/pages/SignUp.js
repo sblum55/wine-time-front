@@ -13,6 +13,7 @@ const SignUpForm = (props) => {
             console.log('sign up response', response);
             props.setUser(response.data.user)
             localStorage.setItem('userId', response.data.user.id)
+            props.fetchUser()
         })
     }
 

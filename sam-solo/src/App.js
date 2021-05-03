@@ -56,7 +56,7 @@ function App() {
         if (user.id) {
           return <Redirect to = '/'/>
         } else {
-          return <SignUpForm setUser = {setUser} />
+          return <SignUpForm setUser = {setUser} fetchUser = {fetchUser} />
         }
       }} />
 
@@ -65,13 +65,13 @@ function App() {
         if (user.id) {
           return <Redirect to = '/'/>
         } else {
-          return <LogInForm setUser = {setUser} />
+          return <LogInForm setUser = {setUser} fetchUser = {fetchUser} />
         }
       }} />
 
       {/* Single Wine Page */}
       <Route exact path = '/wine/:id' render = {(routingInfo) => {
-        return <SingleWine id = {routingInfo.match.params.id} user = {user} />
+        return <SingleWine id = {routingInfo.match.params.id} user = {user} fetchWine = {fetchWine} />
       }} />
 
       {/* Wine form Page */}

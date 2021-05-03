@@ -12,6 +12,7 @@ const LogInForm = (props) => {
             console.log(response);
             props.setUser(response.data.user)
             localStorage.setItem('userId', response.data.encryptedId)
+            props.fetchUser()
         })
     }
 

@@ -56,6 +56,7 @@ const SingleWine = (props) => {
                                 }
                             }).then ((response) => {
                                 setShouldRedirect('/')
+                                props.fetchWine()
                             })
                         }} >DELETE</button>
 
