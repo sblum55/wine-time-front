@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link, Redirect, Route } from 'react-router-dom'
+import { Link, Redirect, useParams } from 'react-router-dom'
 import AddComment from './AddComment';
 
 
@@ -10,15 +10,17 @@ const SingleWine = (props) => {
     const [shouldRedirect, setShouldRedirect] = useState(null)
     const [comment, setComment] = useState([])
     const [isMatch, setIsMatch] = useState(false)
+    const {id} = useParams()
     const auth = localStorage.getItem('userId')
 
     const fetchOneWine = () => {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.id}`)
         .then((response) => {
-            // console.log(response.data.wine);
+            console.log(response.data.wine);
             // console.log(response.data.wine.comments);
             setWine(response.data.wine)
             setComment([...response.data.wine.comments])
+            isCreator(response.data.wine.user.id)
         })
     }
 
@@ -30,7 +32,7 @@ const SingleWine = (props) => {
                 Authorization: localStorage.getItem('userId')
             }
         })
-        console.log(response.data.user, id);
+        console.log('is creator response', response.data.user, id);
         if (response.data.user === id) {
             setIsMatch(true)
             return true
@@ -39,9 +41,7 @@ const SingleWine = (props) => {
         }
     }
 
-    // const isCreator = () => {
-    //     return wine.userId === auth
-    // }
+    useEffect(isCreator, [])
 
     return (
         <div>
@@ -67,13 +67,13 @@ const SingleWine = (props) => {
 
             <div className = 'singleWineContainer'>
                 <div>
-            <h1>{wine.name}</h1>
-            <span>{wine.type}</span>{ ' | '}
-            <span>{wine.price}</span>{ ' | '}
-            <span>{wine.purchase_location}</span>
+                    <h1>{wine.name}</h1>
+                    <span>{wine.type}</span>{ ' | '}
+                    <span>{wine.price}</span>{ ' | '}
+                    <span>{wine.purchase_location}</span>
                 </div>
-            <img src = {wine.image}></img>
-            <p>{wine.description}</p>
+                    <img src = {wine.image}></img>
+                    <p>{wine.description}</p>
             </div>
 
             <div className = 'commentForm'>

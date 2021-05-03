@@ -25,6 +25,7 @@ const EditWine = (props) => {
         axios.put(`${process.env.REACT_APP_BACKEND_URL}/wines/allwines/${props.id}`, wine)
         .then((response) => {
             setRedirect('/')
+            props.fetchWine()
             console.log(response);
         })
     }

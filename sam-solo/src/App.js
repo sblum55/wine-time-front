@@ -34,7 +34,7 @@ function App() {
         }
       })
       .then ((response) => {
-        console.log('verify response', response);
+        // console.log('verify response', response);
         setUser(response.data.user)})
     }
   }
@@ -76,12 +76,12 @@ function App() {
 
       {/* Wine form Page */}
       <Route exact path = '/new'>
-        <WineForm user = {user} setUser = {setUser} fetchWine = {fetchWine} />
+        <WineForm user = {user} setUser = {setUser} fetchWine = {fetchWine} setAllWines = {setAllWines} />
       </Route>
 
       {/* Edit Wine Form */}
       <Route exact path = '/wine/:id/edit' render = {(routingInfo) => {
-        return <EditWine id = {routingInfo.match.params.id} user = {user} />
+        return <EditWine id = {routingInfo.match.params.id} user = {user} fetchWine = {fetchWine} />
       }} />
 
 

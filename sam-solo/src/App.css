@@ -99,6 +99,11 @@ p {
   border-radius: 5px;
 }
 
+.searchBar {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
 .singleWineContainer {
   display: flex;
   flex-direction: column;
