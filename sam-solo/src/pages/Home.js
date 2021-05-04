@@ -29,6 +29,12 @@ const Home = (props) => {
     }, [searchTerm])
     // useEffect(filterWine, [props.allWines, searchTerm])
 
+    const filterList = filteredWine.slice(0).reverse().map(wine => (
+        <li key ={wine.id} className = 'wine-list'>
+            <Link className = 'wineLink' to = {`wine/${wine.id}`}>{wine.name}</Link>
+        </li>
+    ))
+
     return (
         <div>
             <h1>Wine Talk</h1>
@@ -38,7 +44,16 @@ const Home = (props) => {
             </div>
             <div className = 'wineContainer'>
                 <div className = 'wineListContainer'>
-                {wineList}
+                    {searchTerm ?
+                    <div>
+                        {filterList}
+                    </div> 
+                    :
+                    <div>
+                        {wineList}
+                    </div>
+                    
+                    }
                 </div>
             </div>
         </div>
