@@ -43,13 +43,13 @@ const Home = (props) => {
                 <SearchBar searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />
             </div>
             <div className = 'wineContainer'>
-                <div className = 'wineListContainer'>
+                <div>
                     {searchTerm ?
-                    <div>
+                    <div className = 'wineListContainer'>
                         {filterList}
                     </div> 
                     :
-                    <div>
+                    <div className = 'wineListContainer'>
                         {wineList}
                     </div>
                     

@@ -91,7 +91,6 @@ p {
 
 .wine-list {
   width: 80%;
-  /* margin: 30px; */
   list-style-type: none;
   padding: 20px;
   font-size: 25px;
@@ -100,6 +99,7 @@ p {
 }
 
 .searchBar {
+  width: 300px;
   padding: 10px;
   margin-bottom: 20px;
 }
